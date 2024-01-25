@@ -1,11 +1,8 @@
 <?php
 
-use App\Models\Author;
-use App\Models\book;
-use App\Models\client;
-use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\AuthorsController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use app\Http\Controllers\AuthorsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +19,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/authors', [AuthorsController::class, 'index']);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/test', function () {
-    return book::first()->orders;
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::resource('authors', AuthorsController::class);
 });
+
+require __DIR__.'/auth.php';
