@@ -1,4 +1,5 @@
 <ul>
-    @ForEach [$authors => $author]
-    <li> 
+@foreach ($authors => $author)
+    <li>{{ $author=>name }}</li> 
+@endforeach
 </ul>
