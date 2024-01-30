@@ -18,6 +18,6 @@ class client extends Model
 
     public function books()
     {
-        return $this->hasOneThrough(book::class, order::class), 'client_id', 'id', 'id', 'book_id';
+        return $this->hasMany(Book::class, order::class, 'client_id', "id", "id", 'book_id');
     }
 }

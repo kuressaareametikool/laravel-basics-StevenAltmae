@@ -58,7 +58,7 @@ class AuthorsController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource f1rom storage.
      */
     public function destroy(Author $author)
     {

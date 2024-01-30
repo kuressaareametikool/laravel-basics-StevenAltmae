@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\AuthorsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BooksController;
+use App\Http\Controllers\ClientsController;
+use App\Http\Controllers\OrdersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +32,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('authors', AuthorsController::class);
+    Route::resource('books', BooksController::class);
+    Route::resource('clients', ClientsController::class);
+    Route::resource('orders', OrdersController::class);
 });
 
 require __DIR__.'/auth.php';
