@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <
+    <x-primary-link href="{{ route('books.create') }}">Add book</x-primary-link> 
     <div class="py-12">
         <ul>
             @foreach ($books as $book)

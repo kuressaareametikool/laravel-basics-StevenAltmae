@@ -4,10 +4,10 @@
             {{ __('Authors') }}
             
         </h2>
-        <a href="" class="">Add</a>
     </x-slot>
-
-    <div class="py-12">
+    
+    <x-primary-link href="{{ route('authors.create') }}">Add author</x-primary-link> 
+    <div class="py-12">     
         <ul>
             @foreach ($authors as $author)
             <li>           

@@ -22,7 +22,9 @@ class AuthorsController extends Controller
      */
     public function create()
     {
-        //
+        return view('author.create', [
+            'authors' => Author::paginate(30)
+        ]);
     }
 
     /**
@@ -30,8 +32,11 @@ class AuthorsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        Author::create($request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+        ]));
+    }   
 
     /**
      * Display the specified resource.
